@@ -29,20 +29,19 @@ plt.figure()
 #plt.semilogx(_x, _pdf, linewidth=2, color='0.5')
 #plt.semilogx(_x, _y, 'ko')
 plt.hist(taustar, bins=bins, density=True, histtype='stepfilled', color='0.5',
-                label='Bankfull Shields stress: $\\tau^*_\mathrm{bf}$')#:\n'+
+                label='Bankfull bed\nShields stress: $\\tau^*_{b,\mathrm{bf}}$')#:\n'+
                       #'Gravel-bed rivers from\n'+
                       #'Phillips et al. (2022)')
 ax = plt.gca()
 ax.set_xscale('log')
 plt.ylabel('Probability density', fontsize=14)
-plt.xlabel(r'Shields stress: $\tau^*$', fontsize=14)
-plt.axvspan(0.03, 0.06, alpha=0.3, color='k', hatch='///',
-                label=r'$0.03 \leq \tau^* \leq 0.06$')
+plt.xlabel(r'Basal (bed) Shields stress: $\tau^*_b$', fontsize=14)
+plt.axvspan(0.036, 0.072, alpha=0.3, color='k', hatch='///',
+                label=r'$0.036 \leq \tau^* \leq 0.072$')
 plt.axvline(taustar.median(), color='k', linewidth=2,
                 label=r'Median $\tau^*_\mathrm{bf}$ ='+'%.3f'%taustar.median())
 plt.legend(fontsize=10)
 plt.tight_layout()
 
 plt.savefig('bankfull_taustar_Phillips2022.pdf')
-
 
