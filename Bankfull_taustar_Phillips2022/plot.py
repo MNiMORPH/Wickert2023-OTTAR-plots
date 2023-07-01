@@ -7,40 +7,6 @@ plt.ion()
 
 df = pd.read_excel('Alluvial_river_bankfull_geometry__Phillips2022.xlsx')
 
-"""
-taustar = df['tau_*bf'][ np.isfinite(df['tau_*bf']) ]
-loghist = np.histogram(np.log10(taustar), 100)
-linhist = np.histogram(taustar, 100)
-
-_y = loghist[0] / 100#np.sum(loghist[0]) # fraction
-_logx = ( loghist[1][1:] + loghist[1][:-1] ) / 2.
-_x = 10**_logx
-
-_ylin = linhist[0]/100.
-_xlin = ( linhist[1][1:] + linhist[1][:-1] ) / 2.
-
-#plt.semilogx(_x, _y, 'k.')
-
-#_shape, _loc, _scale = lognorm.fit(taustar, floc=0)
-_shape, _loc, _scale = lognorm.fit(taustar, loc=1.2)
-
-# Does the same thing as the below fcn -- keeping for learning + reference
-#_lognorm = lognorm(_shape, _loc, _scale)
-#_pdf = _lognorm.pdf(_x)
-
-_pdf = lognorm.pdf(_x, _shape, _loc, _scale)
-
-plt.semilogx(_xlin, _pdf, linewidth=2, color='0.5')
-plt.semilogx(_xlin, _ylin, 'k.')
-#plt.semilogx(_xlin, pdftmp)
-
-plt.show()
-"""
-
-
-# Starting over
-df = pd.read_excel('Alluvial_river_bankfull_geometry__Phillips2022.xlsx')
-
 nbins = 30
 
 # Finite and gravel
@@ -77,13 +43,6 @@ plt.axvline(taustar.median(), color='k', linewidth=2,
 plt.legend(fontsize=10)
 plt.tight_layout()
 
-"""
-# Try gamma instead
-_shape = gamma.fit(taustar) # 3 PARAMS IN "shape".
-_gamma = gamma(*_shape)
-_pdf = _gamma.pdf(_x)
-plt.semilogx(_x, _pdf, linewidth=2, color='0.5')
-plt.semilogx(_x, _y, 'k.')
-"""
+plt.savefig('bankfull_taustar_Phillips2022.pdf')
 
 
