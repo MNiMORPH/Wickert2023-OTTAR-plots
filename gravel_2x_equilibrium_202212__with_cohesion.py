@@ -35,7 +35,16 @@ rw.initialize_timeseries(t,Q)
 rw.run()
 rw.finalize()
 plt.ion()
-rw.plotDischargeWidthWideningNarrowingGrainstressratio()
+rw.plotDischargeWidthWideningNarrowingGrainstressratio(legend_loc='right')
 plt.show()
+
+fig = plt.gcf()
+_label = ['(a)', '(b)', '(c)', '(d)']
+for i in range(len(fig.get_axes())):
+    ax = fig.get_axes()[i]
+    ax.text(  0.97, 0.94, _label[i], fontsize=12, fontweight='roman',
+              horizontalalignment='right', verticalalignment='top',
+              transform=ax.transAxes)
+
 plt.savefig('Width_Feedbacks_Response_Equilibrium.pdf')
 
