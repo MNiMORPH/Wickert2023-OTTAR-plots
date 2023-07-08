@@ -23,7 +23,7 @@ for Qi in Qi_range:
     rw = ottar.RiverWidth(h_banks=1.2, S=1E-3, tau_crit=2., k_d=1E-6, k_E=0.,
                                     f_stickiness=0., k_n_noncohesive=0.,
                                     b0=20., D=None)
-    rw.initialize_flow_calculations(0.03, 100, 1.5)
+    rw.initialize_flow_calculations(0.025, 100, 1.75, use_Rh=True)
     rw.initialize_timeseries(t,Q)
     rw.run()
     rw.finalize()
@@ -57,6 +57,9 @@ ax.text(tau_banks_bf + np.abs(np.diff(xl))*0.01,
         yl[1] - np.abs(np.diff(yl))*0.1,
         horizontalalignment='left', verticalalignment='top',
         s=r'$\tau_{\beta,\mathrm{bf}}$')
+ax.text(  0.97, 0.06, '(a)', fontsize=12, fontweight='roman',
+          horizontalalignment='right', verticalalignment='bottom',
+          transform=ax.transAxes)
 ax.set_ylabel("$\dot{b}$: Widening Rate\n(Cohesive)\n[m/day]")
 
 # Widening -- noncohesive only
@@ -67,7 +70,7 @@ for Qi in Qi_range:
     rw = ottar.RiverWidth(h_banks=1.2, S=1E-3, tau_crit=None, k_d=0., k_E=0.1,
                                     f_stickiness=0., k_n_noncohesive=0.,
                                     b0=20., D=6E-3)
-    rw.initialize_flow_calculations(0.03, 100, 1.5)
+    rw.initialize_flow_calculations(0.025, 100, 1.75, use_Rh=True)
     rw.initialize_timeseries(t,Q)
     rw.run()
     rw.finalize()
@@ -94,6 +97,9 @@ ax.text(tau_banks_bf + np.abs(np.diff(xl))*0.01,
         yl[1] - np.abs(np.diff(yl))*0.1,
         horizontalalignment='left', verticalalignment='top',
         s=r'$\tau_{\beta,\mathrm{bf}}$')
+ax.text(  0.97, 0.06, '(b)', fontsize=12, fontweight='roman',
+          horizontalalignment='right', verticalalignment='bottom',
+          transform=ax.transAxes)
 ax.set_ylabel("$\dot{b}$: Widening Rate\n(Noncohesive)\n[m/day]")
 
 # Narrowing -- suspended load
@@ -104,7 +110,7 @@ for Qi in Qi_range:
     rw = ottar.RiverWidth(h_banks=1.2, S=1E-3, tau_crit=1., k_d=0., k_E=0.,
                                     f_stickiness=1., k_n_noncohesive=0.,
                                     b0=20., D=6E-3)
-    rw.initialize_flow_calculations(0.03, 100, 1.5)
+    rw.initialize_flow_calculations(0.025, 100, 1.75, use_Rh=True)
     rw.initialize_timeseries(t,Q)
     rw.run()
     rw.finalize()
@@ -122,6 +128,9 @@ ax.text(tau_banks_bf + np.abs(np.diff(xl))*0.01,
         yl[0] + np.abs(np.diff(yl))*0.2,
         horizontalalignment='left', verticalalignment='top',
         s=r'$\tau_{\beta,\mathrm{bf}}$')
+ax.text(  0.97, 0.94, '(c)', fontsize=12, fontweight='roman',
+          horizontalalignment='right', verticalalignment='top',
+          transform=ax.transAxes)
 ax.set_ylabel("$\dot{b}$: Narrowing Rate\n(Suspended Load)\n[m/day]")
 
 # Narrowing -- bed load
@@ -132,7 +141,7 @@ for Qi in Qi_range:
     rw = ottar.RiverWidth(h_banks=1.2, S=1E-3, tau_crit=None, k_d=0, k_E=0.,
                                     f_stickiness=0., k_n_noncohesive=1E-3,
                                     b0=20., D=6E-3)
-    rw.initialize_flow_calculations(0.03, 100, 1.5)
+    rw.initialize_flow_calculations(0.025, 100, 1.75, use_Rh=True)
     rw.initialize_timeseries(t,Q)
     rw.run()
     rw.finalize()
@@ -155,6 +164,9 @@ ax.text(tau_crit + np.abs(np.diff(xl))*0.01,
         yl[0] + np.abs(np.diff(yl))*0.1,
         horizontalalignment='left', verticalalignment='bottom',
         s=r'$\tau_{n,c}$ (bed equiv. for bank stress)')
+ax.text(  0.97, 0.94, '(d)', fontsize=12, fontweight='roman',
+          horizontalalignment='right', verticalalignment='top',
+          transform=ax.transAxes)
 ax.set_xlabel(r"$\tau_\beta$: Bank Shear Stress [Pa]")
 ax.set_ylabel("$\dot{b}$: Narrowing Rate\n(Bed Load)\n[m/day]")
 
