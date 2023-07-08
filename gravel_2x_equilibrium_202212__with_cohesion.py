@@ -42,7 +42,7 @@ fig = plt.gcf()
 _label = ['(a)', '(b)', '(c)', '(d)']
 for i in range(len(fig.get_axes())):
     ax = fig.get_axes()[i]
-    ax.text(  0.97, 0.94, _label[i], fontsize=12, fontweight='roman',
+    ax.text(  0.97, 0.94, _label[i], fontsize=16, fontweight='roman',
               horizontalalignment='right', verticalalignment='top',
               transform=ax.transAxes)
 
