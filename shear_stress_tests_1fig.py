@@ -91,7 +91,7 @@ ax.vlines(tau_crit, yl[0], yl[1], colors='0.5', linestyles='dashed')
 ax.text(tau_crit + np.abs(np.diff(xl))*0.01,
         yl[1] - np.abs(np.diff(yl))*0.1,
         horizontalalignment='left', verticalalignment='top',
-        s=r'$\tau_{n,c}$')
+        s=r'$\tau_{c,n}$')
 ax.vlines(tau_banks_bf, yl[0], yl[1], colors='0.5', linestyles='dashed')
 ax.text(tau_banks_bf + np.abs(np.diff(xl))*0.01,
         yl[1] - np.abs(np.diff(yl))*0.1,
@@ -163,7 +163,7 @@ ax.vlines(tau_crit, yl[0], yl[1], colors='0.5', linestyles='dashed')
 ax.text(tau_crit + np.abs(np.diff(xl))*0.01,
         yl[0] + np.abs(np.diff(yl))*0.1,
         horizontalalignment='left', verticalalignment='bottom',
-        s=r'$\tau_{n,c}$ (bed equiv. for bank stress)')
+        s=r'$\tau_{c,n}$ (bed equiv. for bank stress)')
 ax.text(  0.97, 0.94, '(d)', fontsize=12, fontweight='roman',
           horizontalalignment='right', verticalalignment='top',
           transform=ax.transAxes)
