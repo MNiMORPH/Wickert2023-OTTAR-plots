@@ -24,7 +24,7 @@ for Qi in Qi_range:
                                     f_stickiness=0., k_n_noncohesive=0.,
                                     b0=20., D=None)
     rw.initialize_flow_calculations(0.025, 100, 1.75, use_Rh=True)
-    rw.initialize_timeseries(t,Q)
+    rw.initialize_discharge_timeseries(t,Q)
     rw.run()
     rw.finalize()
     tau_bank.append(rw.tau_bank)
@@ -71,7 +71,7 @@ for Qi in Qi_range:
                                     f_stickiness=0., k_n_noncohesive=0.,
                                     b0=20., D=6E-3)
     rw.initialize_flow_calculations(0.025, 100, 1.75, use_Rh=True)
-    rw.initialize_timeseries(t,Q)
+    rw.initialize_discharge_timeseries(t,Q)
     rw.run()
     rw.finalize()
     tau_bank.append(rw.tau_bank)
@@ -111,7 +111,7 @@ for Qi in Qi_range:
                                     f_stickiness=1., k_n_noncohesive=0.,
                                     b0=20., D=6E-3)
     rw.initialize_flow_calculations(0.025, 100, 1.75, use_Rh=True)
-    rw.initialize_timeseries(t,Q)
+    rw.initialize_discharge_timeseries(t,Q)
     rw.run()
     rw.finalize()
     tau_bank.append(rw.tau_bank)
@@ -142,7 +142,7 @@ for Qi in Qi_range:
                                     f_stickiness=0., k_n_noncohesive=1E-3,
                                     b0=20., D=6E-3)
     rw.initialize_flow_calculations(0.025, 100, 1.75, use_Rh=True)
-    rw.initialize_timeseries(t,Q)
+    rw.initialize_discharge_timeseries(t,Q)
     rw.run()
     rw.finalize()
     tau_bank.append(rw.tau_bank)

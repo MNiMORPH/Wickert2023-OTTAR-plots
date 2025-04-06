@@ -31,7 +31,7 @@ self = rw
 rw.initialize_flow_calculations(0.025, 100, 1.75, use_Rh=True)
 
 
-rw.initialize_timeseries(t,Q)
+rw.initialize_discharge_timeseries(t,Q)
 rw.run()
 rw.finalize()
 plt.ion()
