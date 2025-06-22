@@ -7,10 +7,19 @@ plt.ion()
 
 df = pd.read_excel('Alluvial_river_bankfull_geometry__Phillips2022.xlsx')
 
+# Check aspect ratio and limit to those that are wide relative to their depth
+# such that the Parker 1.2 assumption is correct
+df['Aspect ratio'] = df['Width (m)'] / df['Depth (m)']
+
+# Anything with an aspect ratio < 6 has the channel center region too close
+# to the banks and therefore a higher than 1/1.2 stress on the banks
+# compared to the bed (from wide-channel-approximation basal stress)
+df_mod = df[ df['Aspect ratio'] > 6 ]
+
 nbins = 30
 
 # Finite and gravel
-taustar = df['tau_*bf'][ np.isfinite(df['tau_*bf']) * (df['D50 (m)'] > 0.002)]
+taustar = df_mod['tau_*bf'][ np.isfinite(df_mod['tau_*bf']) * (df_mod['D50 (m)'] > 0.002)]
 log10taustar = np.log10(taustar)
 bins = np.logspace( np.min(log10taustar), np.max(log10taustar), nbins+1)
 bins = np.logspace( -3, 1, nbins+1)
