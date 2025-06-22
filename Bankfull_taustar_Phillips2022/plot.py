@@ -28,16 +28,21 @@ plt.figure()
 # Probably best not to try and fit; just show the data
 #plt.semilogx(_x, _pdf, linewidth=2, color='0.5')
 #plt.semilogx(_x, _y, 'ko')
-plt.hist(taustar, bins=bins, density=True, histtype='stepfilled', color='0.5',
-                label='Bankfull bed\nShields stress: $\\tau^*_{b,\mathrm{bf}}$')#:\n'+
+# Not labeling because this is the x/y axis main plot
+plt.hist(taustar, bins=bins, density=False, histtype='stepfilled', color='0.5')#,
+                #label='Bankfull bed\nShields stress: $\\tau^*_{b,\mathrm{bf}}$')#:\n'+
                       #'Gravel-bed rivers from\n'+
                       #'Phillips et al. (2022)')
+
+#plt.figure()
+#plt.hist( np.log10(taustar), bins=np.linspace(-3,1,30), density=True, histtype='stepfilled', color='0.5')
+
 ax = plt.gca()
 ax.set_xscale('log')
-plt.ylabel('Probability density', fontsize=14)
-plt.xlabel(r'Basal (bed) Shields stress: $\tau^*_b$', fontsize=14)
+plt.ylabel('Number of rivers', fontsize=14)
+plt.xlabel(r'Bankfull bed Shields stress: $\tau^*_b$', fontsize=14)
 plt.axvspan(0.036, 0.072, alpha=0.3, color='k', hatch='///',
-                label=r'$0.036 \leq \tau^* \leq 0.072$')
+                label=r'$0.036 \leq \tau^*_b \leq 0.072$')
 plt.axvline(taustar.median(), color='k', linewidth=2,
                 label=r'Median $\tau^*_\mathrm{bf}$ ='+'%.3f'%taustar.median())
 plt.legend(fontsize=10)
